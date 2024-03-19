@@ -5,8 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Dealer dealer = new Dealer();
-        Player player = new Player();
+        //Dealer dealer = new Dealer();
+        //Player player = new Player();
         Deck deck = new Deck();
 
         deck.createDeck();

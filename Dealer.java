@@ -1,39 +1,52 @@
-import java.util.Collections;
-import java.util.Random;
-
 public class Dealer {
 
-    boolean dealerUpCard;
+    Player player = new Player();
 
-    public void dealCard(){
+    private boolean playerWins;
+    private boolean dealerUpCard;
+    private int tablePot;
+    int valueOfPlayedCardsDealer;
 
-    }
 
-    public void takeBets(){
-
-    }
-
-    public void adjustChips(){
+    private static void dealCard(String target){
 
     }
 
-    public boolean playerHit(){
+    private void takeBets(int playerBetAmount){
 
-        return false;
+        player.numberOfChips = player.numberOfChips - playerBetAmount;
+        tablePot = tablePot + playerBetAmount;
     }
 
-    public boolean playerStay(){
-
-        return false;
+    private void adjustChips(){
+        if (playerWins){
+            player.numberOfChips = player.numberOfChips + (tablePot * 2);
+        } else {
+            tablePot = 0;
+        }
     }
 
-    public boolean playerSplit(){
-
-        return false;
+    public void playerHit(){
+        dealCard("Player");
     }
 
-    public boolean playerDoubleDown(){
+    public void playerStay(){
+        while(valueOfPlayedCardsDealer < 17){
+            dealCard("Dealer");
+        }
+    }
 
-        return false;
+    public void playerSplit(){
+        if(player.playerHasIdenticalValueCards){
+            if(player.numberOfChips - tablePot > 0){
+                takeBets(tablePot);
+                player.splitHand.add(player.mainHand.get(1));
+                player.mainHand.remove(1);
+            }
+        }
+    }
+
+    public void playerDoubleDown(){
+
     }
 }
