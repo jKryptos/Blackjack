@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,6 +14,7 @@ public class Player {
     Boolean playerHasIdenticalValueCards;
 
     public int betChips(int playerBetAmount){
+
         return playerBetAmount;
     }
 
